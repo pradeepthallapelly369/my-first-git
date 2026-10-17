@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Board</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero">
+        <p class="eyebrow">ECC Practice App</p>
+        <h1>Task Board</h1>
+        <p class="lede">Tasks sync across the CLI and browser, with priorities and due dates.</p>
+      </section>
+
+      <section class="panel">
+        <form id="task-form" class="task-form">
+          <label class="sr-only" for="title">New task</label>
+          <input id="title" name="title" type="text" placeholder="Add a new task" autocomplete="off" />
+          <select id="priority" name="priority" aria-label="Priority">
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+          </select>
+          <input id="dueDate" name="dueDate" type="date" aria-label="Due date" />
+          <button type="submit">Add Task</button>
+        </form>
+        <p id="message" class="message" aria-live="polite"></p>
+        <ul id="task-list" class="task-list"></ul>
+      </section>
+    </main>
+
+    <template id="task-item-template">
+      <li class="task-item">
+        <div class="task-copy">
+          <div class="task-head">
+            <span class="task-state"></span>
+            <span class="task-priority"></span>
+            <span class="task-due"></span>
+          </div>
+          <form class="task-edit-form">
+            <label class="sr-only task-title-label">Task title</label>
+            <input class="task-title-input" type="text" />
+            <button class="save-button" type="submit">Save</button>
+          </form>
+        </div>
+        <div class="task-controls">
+          <div class="task-meta-form">
+            <label class="sr-only task-priority-label">Priority</label>
+            <select class="task-priority-select">
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+            <label class="sr-only task-due-label">Due date</label>
+            <input class="task-due-input" type="date" />
+          </div>
+          <div class="task-actions">
+            <button class="complete-button" type="button">Complete</button>
+            <button class="clear-due-button" type="button">Clear Due</button>
+            <button class="remove-button" type="button">Remove</button>
+          </div>
+        </div>
+      </li>
+    </template>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
